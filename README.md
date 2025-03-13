@@ -37,6 +37,7 @@ Installation
 Clone the repository:
 
 git clone git@github.com:Servora/servicemgtapp.git
+
 cd servicemgtapp
 
 Install dependencies:
