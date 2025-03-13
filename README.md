@@ -36,8 +36,8 @@ Installation
 
 Clone the repository:
 
-git clone https://github.com/feyishola/starknet-service-management.git
-cd starknet-service-management
+git clone git@github.com:Servora/servicemgtapp.git
+cd servicemgtapp
 
 Install dependencies:
 
@@ -82,10 +82,6 @@ Commit your changes (git commit -m 'Add new feature').
 Push to the branch (git push origin feature-branch).
 
 Open a Pull Request.
-
-License
-
-This project is licensed under the MIT License.
 
 Contact
 
