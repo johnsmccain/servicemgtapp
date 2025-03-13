@@ -10,8 +10,9 @@ Fork the repository by clicking the "Fork" button on the GitHub page.
 
 Clone your forked repository:
 
-git clone https://github.com/feyishola/starknet-service-management.git
-cd starknet-service-management
+git clone git@github.com:Servora/servicemgtapp.git
+
+cd servicemgtapp
 
 2. Create a New Branch
 
