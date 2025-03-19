@@ -10,7 +10,7 @@ Fork the repository by clicking the "Fork" button on the GitHub page.
 
 Clone your forked repository:
 
-git clone git@github.com:Servora/servicemgtapp.git
+git clone https://github.com/Servora/servicemgtapp.git
 
 cd servicemgtapp
 
