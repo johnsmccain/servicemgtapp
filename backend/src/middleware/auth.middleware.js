@@ -27,7 +27,7 @@ const authenticateToken = (req, res, next) => {
             next();
         });
     } catch (error) {
-        res.status(400).json({ message: "Server Error", error: error.message });
+        res.status(500).json({ message: "Server Error", error: error.message });
     }
 };
 
