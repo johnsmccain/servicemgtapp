@@ -141,4 +141,8 @@ Contributions are welcome! Please follow these steps:
 
 © 2023 StarkNet Service and Management. All rights reserved.
 
-        Too many current requests. Your queue position is 1. Please wait for a while or switch to other models for a smoother experience.
+
+
+Built with ❤️ by the StarkNet Service and Management Team
+
+      
