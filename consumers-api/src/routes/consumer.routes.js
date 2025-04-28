@@ -102,5 +102,15 @@ module.exports = () => {
     }
   });
 
+  api.get("/:id", async (req, res) => {
+    try {
+      let id = req.params.id;
+      let response = await consumerController.getSingleConsumer(id);
+      res.status(200).json({ response: true, payload: response });
+    } catch (error) {
+      res.status(500).json({ response: false, payload: error.message});
+}
+});
+
   return api;
 };
