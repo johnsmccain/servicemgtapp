@@ -102,6 +102,45 @@ module.exports = () => {
     }
   });
 
+  //consumer login
+  api.post("/login", async (req, res) => {
+    try {
+      const { phoneNumber, password } = req.body;
+
+      if (phoneNumber && password) {
+        const user = await consumerController.getUser(phoneNumber);
+
+        if (user !== null) {
+          let checkPassword = await bcrypt.compare(password, user.password);
+
+          if (checkPassword) {
+            let token = jwt.sign(
+              { userName: user.userName, phoneNumber, userType: user.userType },
+              process.env.SECRET_KEY,
+              { expiresIn: "1h" }
+            );
+
+            res.status(200).json({ response: true, payload: { user, token } });
+          } else {
+            res
+              .status(400)
+              .json({ response: false, payload: "Password is incorrect" });
+          }
+        } else {
+          res
+            .status(400)
+            .json({ response: false, payload: "Phone Number is incorrect" });
+        }
+      } else {
+        res
+          .status(400)
+          .json({ response: false, payload: "Both inputs are required" });
+      }
+    } catch (error) {
+      res.status(500).json({ response: false, payload: error.message });
+    }
+  });
+
   api.get("/:id", async (req, res) => {
     try {
       let id = req.params.id;
@@ -111,6 +150,7 @@ module.exports = () => {
       res.status(500).json({ response: false, payload: error.message});
 }
 });
+
 
   return api;
 };
