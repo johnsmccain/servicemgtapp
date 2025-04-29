@@ -35,6 +35,16 @@ module.exports = () => {
     }
   });
 
+  api.get("/", async (req, res) => {
+    try {
+      let response = await consumerController.getAllConsumers();
+
+      res.status(200).json({ response: true, payload: response });
+    } catch (error) {
+      res.status(500).json({ response: false, payload: error.message });
+    }
+  });
+
   api.post("/ratings", async (req, res) => {
     try {
       const {
