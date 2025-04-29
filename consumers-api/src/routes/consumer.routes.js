@@ -147,10 +147,46 @@ module.exports = () => {
       let response = await consumerController.getSingleConsumer(id);
       res.status(200).json({ response: true, payload: response });
     } catch (error) {
-      res.status(500).json({ response: false, payload: error.message});
-}
-});
+      res.status(500).json({ response: false, payload: error.message });
+    }
+  });
 
+  api.put("/:id", async (req, res) => {
+    try {
+      const id = req.params.id;
+
+      const {
+        consumerName,
+        phoneNumber,
+        locationUpdate,
+        permanentAddress,
+        temporaryAddress,
+        userType,
+        password,
+        services,
+      } = req.body;
+
+      const saltRounds = 10;
+      const newPassword = await bcrypt.hash(password, saltRounds);
+      let response = await consumerController.updateConsumer(
+        id,
+        consumerName,
+        phoneNumber,
+        locationUpdate,
+        permanentAddress,
+        temporaryAddress,
+        userType,
+        newPassword,
+        services
+      );
+
+      res
+        .status(200)
+        .json({ response: true, payload: "Consumer record Updated" });
+    } catch (error) {
+      res.status(500).json({ response: false, payload: error.message });
+    }
+  });
 
   return api;
 };
