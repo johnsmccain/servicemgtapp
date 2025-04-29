@@ -151,6 +151,17 @@ module.exports = () => {
 }
 });
 
+  // consumer delete
+  api.delete("/:id", async (req, res) => {
+    try {
+      let id = req.params.id;
+      let response = await consumerController.deleteConsumer(id);
+      res.status(200).json({ response: true, payload: response });
+    } catch (error) {
+      res.status(500).json({ response: false, payload: error.message });
+    }
+  });
+
 
   return api;
 };
